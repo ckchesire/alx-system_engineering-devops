@@ -1,3 +1,2 @@
 #!/bin/bash
 find . -type f \( -name '*[a-z]*[A-Z]*' -o -name '[A-Z]*' \) -exec mv -t /tmp/u {} +
-
