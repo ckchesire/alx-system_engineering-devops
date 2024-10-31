@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # List contents in current directory
 for file in *; do
-	[[ -e $file ]] || continue
 	if [ -f "$file" ] || [ -d "$file" ]; then
 		echo "$file"
 	fi
