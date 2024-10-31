@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# List contents in current directory
+for file in *; do
+	[[ -e $file ]] || continue
+	echo "$file"
+done
