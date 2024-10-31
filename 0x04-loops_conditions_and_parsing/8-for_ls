@@ -2,5 +2,7 @@
 # List contents in current directory
 for file in *; do
 	[[ -e $file ]] || continue
-	echo "$file"
+	if [ -f "$file" ] || [ -d "$file" ]; then
+		echo "$file"
+	fi
 done
