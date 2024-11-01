@@ -3,5 +3,5 @@
 pid=$(pgrep -f "4-to_infinity_and_beyond")
 
 if [ -n "$pid" ]; then
-	echo "SIGTERM" > /proc/"$pid"/fd/0
+	pkill -15 -f "4-to_infinity_and_beyond"
 fi
