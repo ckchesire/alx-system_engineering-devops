@@ -1,6 +1,5 @@
 # Script used to kill process initiated by killmenow bash file
-exec { 'killmenow':
-   command  => '/usr/bin/pkill killmenow',
+exec { 'pkill':
+   command  => '/usr/bin/pill killmenow',
    provider => 'shell',
-   returns  => [0, 1],
 }
