@@ -1,5 +1,6 @@
-# Script to install flask packages
-package { 'Flask':
+#!/usr/bin/pup
+# Script to install flask packages version (2.1.0)
+package {'flask':
   ensure   => '2.1.0',
   provider => 'pip3',
 }
