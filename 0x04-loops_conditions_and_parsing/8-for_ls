@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# List contents in current directory
+for file in *; do
+	if [[ -f "$file"  && ! "$file" =~ ^\. ]]; then
+		file_name=${file#*-}
+		echo "$file_name"
+	fi
+done

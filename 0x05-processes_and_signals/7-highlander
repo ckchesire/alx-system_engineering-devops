@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script that traps SIGTERM signal and define custom behavior
+trap 'echo "I am invincible!!!"' SIGTERM
+while true; do
+	echo "To infinity and beyond"
+	sleep 2
+done
