@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Installing and setting up nginx web server
+
+echo -e "\nUpdating and installing Nginx.\n"
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+echo -e "\nStarting Nginx and configuring firewall rules to allow traffic.\n"
+sudo service nginx start
+sudo ufw allow 'Nginx HTTP'
+
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
+
+sudo bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
+
+sudo sed -i '24i\   rewrite ^/redirect_me https://github.com/ckchesire;' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
+echo -e "\nCompleted.\n"
