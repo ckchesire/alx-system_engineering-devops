@@ -16,7 +16,7 @@ cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.b
 
 sudo bash -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
 
-sudo sed -i '24i\   rewrite ^/redirect_me https://github.com/ckchesire;' /etc/nginx/sites-available/default
+sudo sed -i '24i\   rewrite ^/redirect_me https://github.com/ckchesire permanent;' /etc/nginx/sites-available/default
 
 sudo service nginx restart
 
