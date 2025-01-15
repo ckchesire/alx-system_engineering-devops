@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Fixing docker container issues
+
+sudo apt-get update -y
+sudo apt-get install -y apache2
+sudo service apache2 start
+echo "Hello Holberton" > /var/www/html/index.html
+sudo service apache2 restart
