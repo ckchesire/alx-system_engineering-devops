@@ -2,13 +2,13 @@
 # Install and configure HAProxy as a load balancer
 
 sudo apt-get -y update
-sudo apt-get install --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
-sudo apt-get -y install haproxy=2.4.\*
+sudo apt-get -y install haproxy
+sudo chown $USER:USER /etc/haproxy/haproxy.cfg
 
 sudo bash -c 'cat > /etc/haproxy/haproxy.cfg' <<EOL
 frontend http
     bind *:80
+    mode http
     default_backend web_servers
 
 backend web_servers
