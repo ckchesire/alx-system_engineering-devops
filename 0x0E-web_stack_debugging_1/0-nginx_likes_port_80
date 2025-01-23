@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Script to fix nginx unreachability
-apt-get update -y
-apt-get install -y nginx
-sudo service start nginx
+# Script to fix nginx unreachability by restoring the default server port
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
