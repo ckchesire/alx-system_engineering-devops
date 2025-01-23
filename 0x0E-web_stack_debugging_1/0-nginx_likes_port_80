@@ -1,0 +1,5 @@
+#!/bin/bash
+# Script to fix nginx unreachability
+apt-get update -y
+apt-get update -y nginx
+sudo service start nginx
