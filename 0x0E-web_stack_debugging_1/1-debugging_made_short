@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Script to fix nginx unreachability by restoring the default server port
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo service nginx restart
-kill "$(pgrep 'nginx' | head -1")
+sudo service nginx enable
+sudo service nginx start
