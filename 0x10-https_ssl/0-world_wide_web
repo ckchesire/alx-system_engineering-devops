@@ -6,7 +6,7 @@ get_domain_subdomain_info(){
 		{ print "The subdomain " $1 " is a " $4 " record and points to " $5 }'
 }
 
-if [ "$#" -eq 2]
+if [ "$#" -eq 2 ]
 then
 	get_domain_subdomain_info "$2.$1" "$2"
 else
