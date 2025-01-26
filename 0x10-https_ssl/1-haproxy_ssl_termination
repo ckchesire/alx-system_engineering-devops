@@ -36,6 +36,8 @@ defaults
 frontend http_frontend
     bind *:80
     mode http
+    http-request redirect scheme https code 301 unless { ssl_fc }
+    http-request set-header X_Forwarded-Proto http
     default_backend web_servers
 
 frontend https_frontend
@@ -45,5 +47,5 @@ frontend https_frontend
 
 backend web_servers
     balance roundrobin
-    server 660546-web-01 54.208.113.177
-    server 660546-web-02 52.205.76.174
+    server 660546-web-01 54.208.113.177:80 check
+    server 660546-web-02 52.205.76.174:80 check
