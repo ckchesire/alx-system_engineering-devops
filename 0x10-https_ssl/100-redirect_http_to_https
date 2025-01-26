@@ -47,5 +47,5 @@ frontend https_frontend
 
 backend web_servers
     balance roundrobin
-    server 660546-web-01 54.208.113.177
-    server 660546-web-02 52.205.76.174
+    server 660546-web-01 54.208.113.177:80 check
+    server 660546-web-02 52.205.76.174:80 check
