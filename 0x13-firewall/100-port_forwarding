@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+# Script to foward traffic, that redirects port 8080 to 80
+UFW_RULES_FILE="/etc/ufw/before.rules"
+
+sudo cp $UFW_RULES_FILE "$UFW_RULES_FILE.bak"
+
+echo "Adding UFW rule to redirect port 8080 to 80..."
+
+sudo grep -q "-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80" $UFW_RULES_FILE
+
+if [[ $? -ne 0 ]]; then
+	sed -i '/\*filter/i *nat\n:PREROUTING ACCEPT [0:0]\n-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\nCOMMIT'  $UFW_RULES_FILE
+else
+	echo "Redirection rule already exists. No modification required."
+fi
+
+sudo ufw reload
+
+sudo ufw status verbose
+
+echo "Port is now redirected to port 80."
