@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+# script to perform backup of all databases
+
+set -e
+
+if [ "$#" -ne 1 ]; then
+        echo >&2 "Error: MySQL root argument not provided"
+        echo >&2 "Usage: $0 <mysql_root_password>"
+        exit 1
+fi
+
+MYSQL_PASSWORD="$1"
+DUMP_FILE="backup.sql"
+BACKUP_DATE="$(date +%d-%m-%Y)"
+ARCHIVE_FILE="${BACKUP_DATE}.tar.gz"
+
+if ! mysqldump -u root -p"$MYSQL_PASSWORD" --all-databases --single-transaction --quick --lock-tables=false > "$DUMP_FILE"; then
+        echo >&2 "Error: Failed to create MySQL dump"
+        exit 1
+fi
+
+tar -czf "$ARCHIVE_FILE" "$DUMP_FILE"
+
+echo "Backup completed successfully: $ARCHIVE_FILE" 
