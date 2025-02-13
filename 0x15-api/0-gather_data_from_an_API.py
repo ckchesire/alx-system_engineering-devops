@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+"""Module to display the TODO list progress of an employee
+"""
 import requests
 import sys
-"""Module to display the TODO list progress of and employee
-"""
 
 
 def get_todo_progress(employee_id):
