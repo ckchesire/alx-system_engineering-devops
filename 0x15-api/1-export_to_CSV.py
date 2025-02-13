@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """Module to record all tasks that are owned by an employee
 """
-import sys
 import csv
 import requests
+import sys
 
 
 def get_csv_tasklist(employee_id):
