@@ -10,15 +10,17 @@ def recurse(subreddit, hot_list=[], after="", count=0):
        subreddit.
     """
     url = "https://www.reddit.com/r/{}/.json".format(subreddit)
-    headers = {"User-Agent" : "Mozilla/10.0"}
+    headers = {"User-Agent": "Mozilla/10.0"}
 
     params = {
-            "after" : after
-            "count" : count
-            "limit" : 1000
+            "after": after,
+            "count": count,
+            "limit": 1000,
             }
-    response = request.get(url, headers=headers, params=params, 
-            allow_redirect=False)
+    response = requests.get(url,
+                            headers=headers,
+                            params=params,
+                            allow_redirects=False)
 
     if response.status_code == 404:
         return None

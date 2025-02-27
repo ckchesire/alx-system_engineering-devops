@@ -4,11 +4,11 @@
 import requests
 
 
-def get_subscribers(subreddit):
+def number_of_subscribers(subreddit):
     """Method returns the total number of subscribers on a given subreddit.
     """
     url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    header = {"User-Agent" : "Mozilla/10.0"}
+    headers = {"User-Agent": "Mozilla/10.0"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code != 200:
