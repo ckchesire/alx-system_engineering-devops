@@ -6,7 +6,7 @@ exec { 'update_for_nginx':
   command => '/bin/sed -i "s/15/4096/" /etc/default/nginx',
   # Specify the particular path for the sed command
   path => '/usr/local/bin/:/bin/',
-}
+} ->
 
 # Restart the Nginx server
 exec { 'nginx_server_restart':
