@@ -3,15 +3,7 @@
 # Run executable to increase the ULIMIT of the default file
 exec { 'fix-for-nginx':
   # Update the ULIMIT value
-  command => 'sed -i "s/15/4096/" /etc/default/nginx',
+  command => 'sed -i "s/15/4096/" /etc/default/nginx && sudo service nginx restart',
   # Specify the particular path for the sed command
-  path    => '/usr/local/sbin/:/usr/local/bin/:/bin'
-} ->
-
-# Restart the Nginx server
-exec { 'nginx-restart':
-  # Restart the Nginx service
-  command => 'nginx restart',
-  # Specify the absolute path for the init.d script
-  path    => '/etc/init.d/'
+  path    => '/usr/local/sbin/:/usr/local/bin/:/usr/sbin:/usr/bin:/sbin:/bin'
 }
